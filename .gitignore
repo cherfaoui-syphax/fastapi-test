@@ -80,3 +80,6 @@ myenv/
 
 # Custom project outputs
 *.jsonl
+
+*.pyc
+
