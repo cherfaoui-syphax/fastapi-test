@@ -73,7 +73,7 @@ def _add_multiple_events(event_store, n: int):
 def _get_events(event_store, start_date: str, end_date: str):
     start_ts = datetime.datetime.strptime(start_date, "%Y-%m-%d").timestamp()
     end_ts = datetime.datetime.strptime(end_date, "%Y-%m-%d").timestamp() + 86399 # Add 24 hours to include the entire day
-    events = event_store.storage_strategy.get_events(start_ts, end_ts)
+    events = event_store.get_events(start_ts, end_ts)
     print(f"Events from {start_date} to {end_date}: {events}")
 
 def _get_all_events(event_store):
