@@ -36,9 +36,13 @@ class EventStoreFactory:
             if handler_type == "http":
                 if self.http_endpoint:
                     dispatcher.subscribe(HttpEventHandler(self.http_endpoint))
+                else:
+                    raise ValueError("HTTP endpoint is not specified")
             elif handler_type == "rabbitmq":
                 if self.rabbitmq_connection:
                     dispatcher.subscribe(RabbitMQEventHandler(self.rabbitmq_connection))
+                else:
+                    raise ValueError("RabbitMQ connection is not specified")
             elif handler_type == "console":
                 dispatcher.subscribe(ConsoleEventHandler())
             else:
