@@ -13,7 +13,7 @@ Before running the commands, ensure you activate the virtual environment and ver
 .\myenv\Scripts\activate
 
 # 2. Run CLI commands as a module to correctly resolve the src package imports
-python -m src.cli.cli --help
+python -m src.cli --help
 ```
 
 ---
@@ -27,12 +27,12 @@ All CLI commands are defined under [cli.py](file:///c:/Users/salah/Documents/fas
 Displays usage instructions and list of available subcommands.
 
 ```powershell
-python -m src.cli.cli --help
+python -m src.cli --help
 ```
 
 ---
 
-### 2. Add an Event
+### 2. store an Event
 
 Tests the [store_event](file:///c:/Users/salah/Documents/fastapi-test/src/cli/cli.py#L51) command.
 
@@ -41,7 +41,7 @@ Tests the [store_event](file:///c:/Users/salah/Documents/fastapi-test/src/cli/cl
 If run without options, it prompts you for the event date and message:
 
 ```powershell
-python -m src.cli.cli add-event
+python -m src.cli store-event
 ```
 
 #### Directly Passing Arguments
@@ -50,10 +50,10 @@ Pass the date (YYYY-MM-DD) and message directly using `--date`/`-d` and `--messa
 
 ```powershell
 # Using full options
-python -m src.cli.cli add-event --date "2026-06-12" --message "Successfully created a test event via CLI"
+python -m src.cli store-event --date "2026-06-12" --message "Successfully created a test event via CLI"
 
 # Using short options
-python -m src.cli.cli add-event -d "2026-06-13" -m "Another test event"
+python -m src.cli store-event -d "2026-06-13" -m "Another test event"
 ```
 
 ---
@@ -65,7 +65,7 @@ Tests the [add_multiple_events](file:///c:/Users/salah/Documents/fastapi-test/sr
 #### Interactive Mode (Prompts for Count)
 
 ```powershell
-python -m src.cli.cli add-multiple-events
+python -m src.cli add-multiple-events
 ```
 
 #### Directly Passing Count
@@ -74,10 +74,10 @@ Use the `--count`/`-c` option:
 
 ```powershell
 # Add 5 events sequentially
-python -m src.cli.cli add-multiple-events --count 5
+python -m src.cli add-multiple-events --count 5
 
 # Using short option
-python -m src.cli.cli add-multiple-events -c 3
+python -m src.cli add-multiple-events -c 3
 ```
 
 ---
@@ -89,7 +89,7 @@ Tests the [get_events](file:///c:/Users/salah/Documents/fastapi-test/src/cli/cli
 #### Interactive Mode (Prompts for Dates)
 
 ```powershell
-python -m src.cli.cli get-events
+python -m src.cli get-events
 ```
 
 #### Directly Passing Date Range
@@ -98,10 +98,10 @@ Use `--start-date`/`-s` and `--end-date`/`-e`:
 
 ```powershell
 # Query events between June 1st and June 30th, 2026
-python -m src.cli.cli get-events --start-date "2026-06-01" --end-date "2026-06-30"
+python -m src.cli get-events --start-date "2026-06-01" --end-date "2026-06-30"
 
 # Using short options
-python -m src.cli.cli get-events -s "2026-06-10" -e "2026-06-15"
+python -m src.cli get-events -s "2026-06-10" -e "2026-06-15"
 ```
 
 ---
@@ -111,7 +111,7 @@ python -m src.cli.cli get-events -s "2026-06-10" -e "2026-06-15"
 Tests the [get_all_events](file:///c:/Users/salah/Documents/fastapi-test/src/cli/cli.py#L94) command to fetch every event in storage.
 
 ```powershell
-python -m src.cli.cli get-all-events
+python -m src.cli get-all-events
 ```
 
 ---
@@ -125,7 +125,7 @@ Tests the [export_as_jsonl](file:///c:/Users/salah/Documents/fastapi-test/src/cl
 If run without options, it asks you to specify the path (defaults to `exported_events.jsonl` if you press enter):
 
 ```powershell
-python -m src.cli.cli export-as-jsonl
+python -m src.cli export-as-jsonl
 ```
 
 #### Directly Passing Output File
@@ -134,10 +134,10 @@ Use `--output`/`-o` to specify a custom output path:
 
 ```powershell
 # Export to a custom jsonl file
-python -m src.cli.cli export-as-jsonl --output "my_exported_events.jsonl"
+python -m src.cli export-as-jsonl --output "my_exported_events.jsonl"
 
 # Using short option
-python -m src.cli.cli export-as-jsonl -o "test_export.jsonl"
+python -m src.cli export-as-jsonl -o "test_export.jsonl"
 ```
 
 ---
@@ -147,12 +147,12 @@ python -m src.cli.cli export-as-jsonl -o "test_export.jsonl"
 Tests the [interactive](file:///c:/Users/salah/Documents/fastapi-test/src/cli/cli.py#L123) command, presenting a numeric text menu to invoke all features continuously without restarting the script.
 
 ```powershell
-python -m src.cli.cli interactive
+python -m src.cli interactive
 ```
 
 _Menu Options:_
 
-1. Add event
+1. store event
 2. Add multiple events
 3. View events in date range
 4. View all events
@@ -167,4 +167,4 @@ The CLI behaviour adapts based on variables specified in the [.env](file:///c:/U
 
 - **`STORAGE_TYPE`**: Can be set to `mongodb` or `in_memory`.
 - **`MONGO_DB_URI`**: Required if `STORAGE_TYPE=mongodb`.
-- **`EVENT_HANDLERS`**: Comma-separated handlers (e.g. `console`, `rabbitmq`).
+- **`EVENT_HANDLERS`**: Comma-separated handlers (e.g. `console`, `rabbitmq`, `http`).
