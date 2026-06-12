@@ -69,7 +69,7 @@ def test_mongodb_storage_strategy():
             "$gte": 1780272000.0,
             "$lte": 1780358400.0
         }
-    })
+    },{'_id': 0})
     assert events == [{"date": 1780272000.0, "data": "hello"}]
 
     # Test get_events_stream
