@@ -1,13 +1,13 @@
 import pytest
 import json
 from unittest.mock import MagicMock, patch
-from src.event_handler.event_handler import EventHandlerManager
-from src.event_handler.console_event_handler import ConsoleEventHandler
-from src.event_handler.http_event_handler import HttpEventHandler
-from src.event_handler.rabbit_mq_event_handler import RabbitMQEventHandler
+from src.date_time_event_store.event_store_subscribers.event_manager import EventManager
+from src.date_time_event_store.event_store_subscribers.console_listener import ConsoleEventHandler
+from src.date_time_event_store.event_store_subscribers.http_listener import HttpEventHandler
+from src.date_time_event_store.event_store_subscribers.rabbit_mq_listener import RabbitMQEventHandler
 
 def test_event_handler_manager():
-    manager = EventHandlerManager()
+    manager = EventManager()
     
     mock_listener = MagicMock()
     manager.subscribe(mock_listener)

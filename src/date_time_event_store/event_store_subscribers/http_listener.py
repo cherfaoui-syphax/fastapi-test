@@ -1,10 +1,10 @@
 import requests
 import logging
-from .event_handler import AbstractEventHandler
+from .abstract_listener import AbstractEventListener
 
 logger = logging.getLogger(__name__)
 
-class HttpEventHandler(AbstractEventHandler):
+class HttpEventHandler(AbstractEventListener):
     def __init__(self, endpoint: str):
         self.endpoint = endpoint
         

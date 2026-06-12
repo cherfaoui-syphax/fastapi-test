@@ -1,6 +1,6 @@
 import logging
 from typing import Iterator
-from .storage_strategy import StorageStrategy
+from .abstract_strategy import StorageStrategy
 from sortedcontainers import SortedList
 
 logger = logging.getLogger(__name__)

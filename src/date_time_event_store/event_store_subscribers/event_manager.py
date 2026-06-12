@@ -1,31 +1,18 @@
-from abc import ABC, abstractmethod
 import logging
+
+from .abstract_listener import AbstractEventListener
 
 logger = logging.getLogger(__name__)
 
-class AbstractEventHandler(ABC):
-    """
-    Abstract base class for event handlers.
-    """
-    @abstractmethod
-    def handle_event(self, date: float, data: str) -> None:
-        """
-        Handle an event.
-        
-        Args:
-            date (float): The date of the event.
-            data (str): The data of the event.
-        """
-        pass
 
-class EventHandlerManager:
+class EventManager:
     def __init__(self):
-        self._listeners: list[AbstractEventHandler] = []
+        self._listeners: list[AbstractEventListener] = []
 
-    def subscribe(self, listener: AbstractEventHandler) -> None:
+    def subscribe(self, listener: AbstractEventListener) -> None:
         self._listeners.append(listener)
 
-    def unsubscribe(self, listener: AbstractEventHandler) -> None:
+    def unsubscribe(self, listener: AbstractEventListener) -> None:
         if listener in self._listeners:
             self._listeners.remove(listener)
 

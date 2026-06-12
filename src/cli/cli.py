@@ -4,7 +4,7 @@ import json
 import typer
 import logging
 from dotenv import load_dotenv
-from src.event_store_factory import EventStoreFactory
+from src.date_time_event_store.event_store_factory import EventStoreFactory
 
 # Load environment variables from .env file
 load_dotenv()

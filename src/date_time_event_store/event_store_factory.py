@@ -1,7 +1,7 @@
-from src.event_storage.storage_strategy import StorageStrategy
+from .event_storage_strategy.abstract_strategy import StorageStrategy
 import os
-from .event_storage import MongoDBStorageStrategy, InMemoryStorageStrategy
-from .event_handler import HttpEventHandler, RabbitMQEventHandler, ConsoleEventHandler, EventHandlerManager
+from .event_storage_strategy import MongoDBStorageStrategy, InMemoryStorageStrategy
+from .event_store_subscribers import HttpEventHandler, RabbitMQEventHandler, ConsoleEventHandler, EventManager
 from .event_store import DateTimeEventStore
 from typing import Literal, List
 class EventStoreFactory:
@@ -30,8 +30,8 @@ class EventStoreFactory:
 
 
 
-    def create_event_handlers(self) -> EventHandlerManager:
-        dispatcher = EventHandlerManager()
+    def create_event_handlers(self) -> EventManager:
+        dispatcher = EventManager()
         for handler_type in self.event_handlers:
             if handler_type == "http":
                 if self.http_endpoint:

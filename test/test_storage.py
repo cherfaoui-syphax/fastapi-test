@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import MagicMock
-from src.event_storage.in_memory_strategy import InMemoryStorageStrategy
-from src.event_storage.mongo_db_storage_strategy import MongoDBStorageStrategy
+from src.date_time_event_store.event_storage_strategy.in_memory_strategy import InMemoryStorageStrategy
+from src.date_time_event_store.event_storage_strategy.mongo_db_strategy import MongoDBStorageStrategy
 
 def test_in_memory_storage_strategy():
     strategy = InMemoryStorageStrategy()

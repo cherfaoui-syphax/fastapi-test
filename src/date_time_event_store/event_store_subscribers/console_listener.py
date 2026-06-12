@@ -1,9 +1,9 @@
 import logging
-from .event_handler import AbstractEventHandler
+from .abstract_listener import AbstractEventListener
 
 logger = logging.getLogger(__name__)
 
-class ConsoleEventHandler(AbstractEventHandler):
+class ConsoleEventHandler(AbstractEventListener):
     def handle_event(self, date: float, data: str) -> None:
         # Code to handle console events
         logger.info(f"ConsoleEventHandler: Processing event with date={date}, data={repr(data)}")

@@ -1,10 +1,10 @@
 import json
 import logging
-from .event_handler import AbstractEventHandler
+from .abstract_listener import AbstractEventListener
 
 logger = logging.getLogger(__name__)
 
-class RabbitMQEventHandler(AbstractEventHandler):
+class RabbitMQEventHandler(AbstractEventListener):
     def __init__(self, connection):
         self.connection = connection
         
