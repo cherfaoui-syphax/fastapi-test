@@ -16,7 +16,7 @@ class InMemoryStorageStrategy(StorageStrategy):
     def get_events(self, start_date: float, end_date: float) -> list[dict]:
         logger.info(f"InMemoryStorageStrategy: Querying events between start_date={start_date} and end_date={end_date}")
         events = [ 
-            {'at' : date, 'data' : data} for date, data in self.data.irange_key(start_date, end_date)
+            {"date" : date, 'data' : data} for date, data in self.data.irange_key(start_date, end_date)
         ]
         logger.info(f"InMemoryStorageStrategy: Retrieved {len(events)} events")
         return events
@@ -24,6 +24,6 @@ class InMemoryStorageStrategy(StorageStrategy):
     def get_events_stream(self, start_date: float, end_date: float) -> Iterator[dict]:
         logger.info(f"InMemoryStorageStrategy: Requesting events stream between start_date={start_date} and end_date={end_date}")
         for item in self.data.irange_key(start_date, end_date):
-            yield {'at' : item[0], 'data' : item[1]}
+            yield {"date" : item[0], 'data' : item[1]}
 
     

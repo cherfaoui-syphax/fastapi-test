@@ -14,21 +14,21 @@ def test_in_memory_storage_strategy():
     # Test get_events sorted order
     events = strategy.get_events(1780272000.0, 1780444800.0)
     assert len(events) == 3
-    assert events[0] == {"at": 1780272000.0, "data": "one"}
-    assert events[1] == {"at": 1780358400.0, "data": "two"}
-    assert events[2] == {"at": 1780444800.0, "data": "three"}
+    assert events[0] == {"date": 1780272000.0, "data": "one"}
+    assert events[1] == {"date": 1780358400.0, "data": "two"}
+    assert events[2] == {"date": 1780444800.0, "data": "three"}
 
     # Test filtering date range
     filtered = strategy.get_events(1780358400.0, 1780358400.0)
     assert len(filtered) == 1
-    assert filtered[0]["at"] == 1780358400.0
+    assert filtered[0]["date"] == 1780358400.0
 
     # Test stream
     stream = strategy.get_events_stream(1780272000.0, 1780358400.0)
     stream_list = list(stream)
     assert len(stream_list) == 2
-    assert stream_list[0]["at"] == 1780272000.0
-    assert stream_list[1]["at"] == 1780358400.0
+    assert stream_list[0]["date"] == 1780272000.0
+    assert stream_list[1]["date"] == 1780358400.0
 
 
 
